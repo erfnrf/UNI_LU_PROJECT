@@ -1,4 +1,4 @@
-This code is designed to manage university system information, including adding professors, students, and course enrollments. It supports both frontend usage for website integration and backend usage with tools like Postman and Insomnia. The code includes validation for all inputs. The data must be entered in the following order: course, professor, then student; otherwise, it won't be accepted. Below, I will demonstrate how to use this code with backend tools.
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/e38189d0-137f-49e7-8e84-aed1d215dcb6)This code is designed to manage university system information, including adding professors, students, and course enrollments. It supports both frontend usage for website integration and backend usage with tools like Postman and Insomnia. The code includes validation for all inputs. The data must be entered in the following order: course, professor, then student; otherwise, it won't be accepted. Below, I will demonstrate how to use this code with backend tools.
 
 
 
@@ -162,9 +162,18 @@ for course
 ====================================================================================================================================================================================================================================================================================
 
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/b4fd1a18-5b14-422a-b231-9803f272dad4)
+
+
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/ca2e630c-9b3d-413d-8986-db42e02a5a48)
+
+
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/e08fc922-d739-44ac-8114-559c6cd59323)
 
-====================================================================================================================================================================================================================================================================================
 
+
+====================================================================================================================================================================================================================================================================================
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/308a8747-3854-4c01-854e-56d3367a5dce)
+
+فایل مین 
+====================================================================================================================================================================================================================================================================================
 
