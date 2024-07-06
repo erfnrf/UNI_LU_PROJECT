@@ -106,9 +106,12 @@ for course
 
 
 بخش بالا برای بروزرسانی اساتید است
+
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/9f7d5905-65a0-4cee-8355-1fc3264f3604)
 
+
 بخش بالا برای حذف استاد وارد شده است
+
 
 
 
