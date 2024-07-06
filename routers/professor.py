@@ -24,18 +24,18 @@ def get_professors(db: Session = Depends(get_db)):
 def add_professor(professor: pclass, db: Session = Depends(get_db)):
     persian_alphabet = list(range(ord('ا'), ord('ی') + 1))
 
-    # Validate professor ID length
+
     if len(professor.lid) != 6:
         raise HTTPException(status_code=400, detail="کد استاد 6 رقم است")
     
-    # Validate Persian alphabet for names
+
     for attr, name in [("pfn", professor.pfn), ("pln", professor.pln)]:
         if any(ord(char) not in persian_alphabet for char in name):
             raise HTTPException(status_code=400, detail=f"{attr} باید به فارسی باشد")
         if len(name) > 10:
             raise HTTPException(status_code=400, detail=f"{attr} نباید بیشتر از 10 کاراکتر باشد")
 
-    # Validate birth date format
+
     try:
         year, month, day = map(int, professor.pbirth.split("/"))
     except ValueError:
@@ -47,7 +47,7 @@ def add_professor(professor: pclass, db: Session = Depends(get_db)):
        (year > 1403):
         raise HTTPException(status_code=400, detail="تاریخ تولد نامعتبر است")
 
-    # Additional validations
+ 
     if professor.pborncity not in cities:
         raise HTTPException(status_code=400, detail="شهر وارد شده اشتباه است")
     if len(professor.ppostalcode) != 10:
@@ -59,10 +59,10 @@ def add_professor(professor: pclass, db: Session = Depends(get_db)):
     if len(professor.pnid) != 10:
         raise HTTPException(status_code=400, detail="کد ملی باید 10 رقم باشد")
 
-    # Check if pscid exists in the course table
+   
     course_exists = db.query(models.course).filter(models.course.cname == professor.pscid).first()
     if not course_exists:
-        # Get list of all course names
+        
         course_names = [course.cname for course in db.query(models.course).all()]
         raise HTTPException(status_code=400, detail=f"درس مورد نظر اشتباه است. لیست درس‌های موجود: {course_names}")
 
