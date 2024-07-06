@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    function updateMajors() {
+        const department = document.getElementById("d").value;
+        const majorDropdown = document.getElementById("m");
+
+        const majors = {
+            "فنی و مهندسی": ["مهندسی برق", "مهندسی کامپیوتر", "مهندسی عمران", "مهندسی مکانیک"],
+            "علوم پایه": ["ریاضیات", "فیزیک", "شیمی", "زیست‌شناسی"],
+            "دامپزشکی": ["دامپزشکی عمومی", "تخصصی"],
+            "ادبیات و اقتصاد": ["ادبیات فارسی", "علوم اقتصادی", "مدیریت"]
+        };
+
+        // Clear existing options
+        majorDropdown.innerHTML = "<option value='' disabled selected>انتخاب کنید</option>";
+
+        // Populate with options based on selected department
+        if (department && majors[department]) {
+            majors[department].forEach(function(maj) {
+                const option = document.createElement("option");
+                option.value = maj;
+                option.text = maj;
+                majorDropdown.add(option);
+            });
+        }
+    }
+
+    // Call the function when the page loads
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('de').addEventListener('change', updateMajors);
+    });
+
+    function validateForm() {
+        var studentId = document.getElementById("st").value;
+        var postalCode = document.getElementById("postalcode").value;
+        var phoneNumber = document.getElementById("cp").value;
+        var nationalId = document.getElementById("nid").value;
+
+        var errorField1 = document.getElementById("error-message1");
+        var errorField2 = document.getElementById("error-message2");
+        var errorField3 = document.getElementById("error-message3");
+        var errorField4 = document.getElementById("error-message4");
+
+        var valid = true;
+
+        if (studentId.length !== 11) {
+            errorField1.innerHTML = "شماره دانشجویی باید دقیقاً 11 رقم باشد.";
+            valid = false;
+        } else {
+            errorField1.innerHTML = "";
+        }
+
+        if (postalCode.length !== 10) {
+            errorField2.innerHTML = "کد پستی باید 10 رقم باشد.";
+            valid = false;
+        } else {
+            errorField2.innerHTML = "";
+        }
+
+        if (phoneNumber.length !== 11) {
+            errorField3.innerHTML = "شماره تلفن باید 11 رقم باشد.";
+            valid = false;
+        } else {
+            errorField3.innerHTML = "";
+        }
+
+        if (nationalId.length !== 10) {
+            errorField4.innerHTML = "کد ملی باید 10 رقم باشد.";
+            valid = false;
+        } else {
+            errorField4.innerHTML = "";
+        }
+
+        return valid;
+    }
+</script>
+
+    <form action="/update_course/{{ user.id }}" method="post" onsubmit="return validateForm()">
+        <div class="mb-3">
+            <label>کد درس</label>
+            <input type="text" name="cid" placeholder="cid" class="form-control" value="{{ user.cid }}" />
+        </div>
+        <div class="mb-3">
+            <label>نام درس</label>
+            <input type="text" name="cname" placeholder="cname" class="form-control" value="{{ user.cname }}" />
+        </div>
+        <div class="mb-3">
+            <label>Department</label>
+            <select id="de" name="de" class="form-control" value="{{ user.de}}" required autocomplete="off" value="{{ user.de }}">
+                <option value="" disabled selected>انتخاب کنید</option>
+                <option value="فنی و مهندسی">فنی و مهندسی</option>
+                <option value="علوم پایه">علوم پایه</option>
+                <option value="دامپزشکی">دامپزشکی</option>
+                <option value="ادبیات و اقتصاد">ادبیات و اقتصاد</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>credit</label>
+            <select name="credit" class="form-control" value="{{ user.credit}}" required autocomplete="off">
+                <option value="1" {% if user.credit == '1' %}selected{% endif %}>1</option>
+                <option value="2" {% if user.credit == '2' %}selected{% endif %}>2</option>
+                <option value="3" {% if user.credit == '3' %}selected{% endif %}>3</option>
+                <option value="4" {% if user.credit == '4' %}selected{% endif %}>4</option>
+            </select>
+        </div>
+        <input type="submit" value="Update" class="btn btn-primary mb-3" />  
+    </form>
+{% endblock content %}

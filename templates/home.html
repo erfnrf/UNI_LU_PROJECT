@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Management</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>University Management</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/studentsadd">ADD Students</a></li>
+                    <li><a href="/professoradd">ADD Professors</a></li>
+                    <li><a href="/coursesadd">ADD Courses</a></li>
+                    <li><a href="/studentsinfo">students info</a></li>
+                    <li><a href="/professorsinfo">Professors info</a></li>
+                    <li><a href="/coursesinfo">courses info</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Welcome to the University Management System</h1>
+        <p>Manage students, professors, and courses easily.</p>
+    </div>
+    
+    {% block content %}
+    {% endblock content %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    function updateMajors() {
+        const pd = document.getElementById("pd").value;
+        const majorDropdown = document.getElementById("pm");
+
+        const majors = {
+            "فنی و مهندسی": ["مهندسی برق", "مهندسی کامپیوتر", "مهندسی عمران", "مهندسی مکانیک"],
+            "علوم پایه": ["ریاضیات", "فیزیک", "شیمی", "زیست‌شناسی"],
+            "دامپزشکی": ["دامپزشکی عمومی", "تخصصی"],
+            "ادبیات و اقتصاد": ["ادبیات فارسی", "علوم اقتصادی", "مدیریت"]
+        };
+
+        // Clear existing options
+        majorDropdown.innerHTML = "<option value='' disabled selected>انتخاب کنید</option>";
+
+        // Populate with options based on selected college
+        if (pd && majors[pd]) {
+            majors[pd].forEach(function(maj) {
+                const option = document.createElement("option");
+                option.value = maj;
+                option.text = maj;
+                majorDropdown.add(option);
+            });
+        }
+    }
+
+    // Call the function when the page loads
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('pd').addEventListener('change', updateMajors);
+    });
+
+    function validateForm() {
+        var postal_code = document.getElementById("ppostalcode").value;
+        var phone_number = document.getElementById("pcp").value;
+        var national_id = document.getElementById("pnid").value;
+
+        var errorField2 = document.getElementById("error-message2");
+        var errorField3 = document.getElementById("error-message3");
+        var errorField4 = document.getElementById("error-message4");
+
+        var valid = true;
+
+        if (postal_code.length !== 10) {
+            errorField2.innerHTML = "کد پستی باید 10 رقم باشد.";
+            valid = false;
+        } else {
+            errorField2.innerHTML = "";
+        }
+
+        if (phone_number.length !== 11) {
+            errorField3.innerHTML = "شماره تلفن باید 11 رقم باشد.";
+            valid = false;
+        } else {
+            errorField3.innerHTML = "";
+        }
+
+        if (national_id.length !== 10) {
+            errorField4.innerHTML = "کد ملی باید 10 رقم باشد.";
+            valid = false;
+        } else {
+            errorField4.innerHTML = "";
+        }
+
+        return valid;
+    }
+</script>
+<form action="/add_professor" method="post" onsubmit="return validateForm()"> 
+    <div class="mb-3">
+        <label>کد استاد :</label>
+        <input type="text" name="lid" placeholder="lid" class="form-control" maxlength="6" required autocomplete="off"/>
+    </div>
+    <div class="mb-3">
+        <label>نام:</label>
+        <input type="text" name="pfn" placeholder="pfname" class="form-control" maxlength="10"required autocomplete="off"/>
+    </div> 
+    <div class="mb-3">
+        <label>نام خانوادگی:</label>
+        <input type="text" name="pln" placeholder="plname" class="form-control" maxlength="10" required autocomplete="off"/>
+    </div> 
+    <div class="mb-3">
+        <label>تاریخ تولد:</label>
+        <input type="text" name="pbirth" placeholder="روز/ماه/سال" class="form-control"required autocomplete="off" maxlength="10"/>
+    </div> 
+    <div class="form-control">
+        <label for="city_of_birth">شهر تولد:</label>
+        <select id="pborncity" name="pborncity" required autocomplete="off" class="form-control">
+            <option value="" disabled selected>انتخاب کنید</option>
+            <option value="آبادان">آبادان</option>
+            <option value="اراک">اراک</option>
+            <option value="اصفهان">اصفهان</option>
+            <option value="اهواز">اهواز</option>
+            <option value="ایلام">ایلام</option>
+            <option value="بابل">بابل</option>
+            <option value="بجنورد">بجنورد</option>
+            <option value="بندرعباس">بندرعباس</option>
+            <option value="بندرانزلی">بندرانزلی</option>
+            <option value="بوشهر">بوشهر</option>
+            <option value="پارس‌آباد">پارس‌آباد</option>
+            <option value="پارسیان">پارسیان</option>
+            <option value="پلدختر">پلدختر</option>
+            <option value="پیشوا">پیشوا</option>
+            <option value="تبریز">تبریز</option>
+            <option value="تهران">تهران</option>
+            <option value="جیرفت">جیرفت</option>
+            <option value="خرم‌آباد">خرم‌آباد</option>
+            <option value="رشت">رشت</option>
+            <option value="زاهدان">زاهدان</option>
+            <option value="زنجان">زنجان</option>
+            <option value="ساوه">ساوه</option>
+            <option value="سنندج">سنندج</option>
+            <option value="سبزوار">سبزوار</option>
+            <option value="سمنان">سمنان</option>
+            <option value="شهرکرد">شهرکرد</option>
+            <option value="شیراز">شیراز</option>
+            <option value="قزوین">قزوین</option>
+            <option value="قم">قم</option>
+            <option value="کرج">کرج</option>
+            <option value="کرمان">کرمان</option>
+            <option value="کرمانشاه">کرمانشاه</option>
+            <option value="کاشان">کاشان</option>
+            <option value="کاشمر">کاشمر</option>
+            <option value="گرگان">گرگان</option>
+            <option value="گلستان">گلستان</option>
+            <option value="مازندران">مازندران</option>
+            <option value="مشهد">مشهد</option>
+            <option value="مهران">مهران</option>
+            <option value="مهریز">مهریز</option>
+            <option value="میبد">میبد</option>
+            <option value="نی‌ریز">نی‌ریز</option>
+            <option value="نجف‌آباد">نجف‌آباد</option>
+            <option value="نهران">نهران</option>
+            <option value="نیشابور">نیشابور</option>
+            <option value="همدان">همدان</option>
+            <option value="یاسوج">یاسوج</option>
+            <option value="یزد">یزد</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>آدرس:</label>
+        <input type="text" name="paddress" placeholder="Address" class="form-control"required autocomplete="off" maxlength="100"/>
+    </div> 
+    <div class="mb-3">
+        <label>کد پستی:</label>
+        <input type="text" id="ppostalcode" name="ppostalcode" placeholder="PostalCode" class="form-control" required autocomplete="off" maxlength="10"/>
+        <span id="error-message2" style="color: red;"></span>
+    </div> 
+    <div class="mb-3">
+        <label>تلفن همراه:</label>
+        <input type="text" id="pcp" name="pcp" placeholder="CPhone" class="form-control" required autocomplete="off" maxlength="11"/>
+        <span id="error-message3" style="color: red;"></span>
+    </div> 
+    <div class="mb-3">
+        <label for="landline">تلفن ثابت:</label>
+        <div class="serial-inputs">
+            <select id="php" name="php" class="form-control" required autocomplete="off">
+                <option value="" disabled selected>کد</option>
+                <option value="011">011 - ساری</option>
+                <option value="013">013 - رشت</option>
+                <option value="017">017 - گرگان</option>
+                <option value="021">021 - تهران</option>
+                <option value="023">023 - سمنان</option>
+                <option value="024">024 - زنجان</option>
+                <option value="025">025 - قم</option>
+                <option value="026">026 - کرج</option>
+                <option value="028">028 - قزوین</option>
+                <option value="031">031 - اصفهان</option>
+                <option value="034">034 - کرمان</option>
+                <option value="035">035 - یزد</option>
+                <option value="038">038 - شهرکرد</option>
+                <option value="041">041 - تبریز</option>
+                <option value="044">044 - ارومیه</option>
+                <option value="045">045 - اردبیل</option>
+                <option value="054">054 - زاهدان</option>
+                <option value="056">056 - بجنورد</option>
+                <option value="058">058 - بیرجند</option>
+                <option value="061">061 - اهواز</option>
+                <option value="066">066 - لرستان</option>
+                <option value="071">071 - شیراز</option>
+                <option value="074">074 - کهگیلویه و بویراحمد</option>
+                <option value="076">076 - بندرعباس</option>
+                <option value="077">077 - بوشهر</option>
+                <option value="081">081 - همدان</option>
+                <option value="083">083 - کرمانشاه</option>
+                <option value="084">084 - ایلام</option>
+                <option value="086">086 - اراک</option>
+                <option value="087">087 - سنندج</option>
+            </select>
+            <input type="text" id="php_number" name="php_number" required autocomplete="off" maxlength="8" placeholder="شماره" class="form-control">
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="pd">دانشکده:</label>
+        <select id="pd" name="pd" class="form-control" required autocomplete="off">
+            <option value="" disabled selected>انتخاب کنید</option>
+            <option value="فنی و مهندسی">فنی و مهندسی</option>
+            <option value="علوم پایه">علوم پایه</option>
+            <option value="دامپزشکی">دامپزشکی</option>
+            <option value="ادبیات و اقتصاد">ادبیات و اقتصاد</option>
+        </select>
+    </div> 
+    <div class="mb-3">
+        <label>رشته:</label>
+        <select id="pm" name="pm" class="form-control" required autocomplete="off">
+            <option value="" disabled selected>انتخاب کنید</option>
+        </select>
+    </div> 
+    <div class="mb-3">
+        <label>کد ملی:</label>
+        <input type="text" id="pnid" name="pnid" placeholder="NID" class="form-control" required autocomplete="off" maxlength="10"/>
+        <span id="error-message4" style="color: red;"></span>
+    </div> 
+    <div class="mb-3">
+        <label for="pscid">درس ها:</label>
+        <select id="pscid" name="pscid" class="form-control" required autocomplete="off">
+            <option value="" disabled selected>انتخاب از دروس</option>
+            {% for course in courses %}
+                <option value="{{ course.cid }}">{{ course.cname }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary mb-3" />  
+    <a href="/home" class="btn btn-primary mb-3">Home</a>
+</form>  
+{% endblock content %}

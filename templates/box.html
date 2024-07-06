@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <br><br>
+        <a href="/coursesadd" class="btn btn-primary">Add New Course</a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    
+                    <th>CID</th>
+                    <th>CNAME</th>
+                    <th>DEPARTMENT</th>
+                    <th>CREDIT</th>
+                    
+                    <th width="200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in courses %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        
+                        <td>{{ user.cid }}</td>
+                        <td>{{ user.cname }}</td>
+                        <td>{{ user.de }}</td>
+                        <td>{{ user.credit }}</td>
+                        <td>
+                            <a href="edit_course/{{ user.id }}" class="btn btn-success">Edit</a> 
+                            <a href="delete_course/{{ user.id }}" class="btn btn-danger">Delete</a>  
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+        <a href="/" class="btn btn-primary">home</a>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<script>
+    function updateMajors() {
+        const d = document.getElementById("d").value;
+        const majorDropdown = document.getElementById("m");
+
+        const majors = {
+            "فنی و مهندسی": ["مهندسی برق", "مهندسی کامپیوتر", "مهندسی عمران", "مهندسی مکانیک"],
+            "علوم پایه": ["ریاضیات", "فیزیک", "شیمی", "زیست‌شناسی"],
+            "دامپزشکی": ["دامپزشکی عمومی", "تخصصی"],
+            "ادبیات و اقتصاد": ["ادبیات فارسی", "علوم اقتصادی", "مدیریت"]
+        };
+
+        // Clear existing options
+        majorDropdown.innerHTML = "<option value='' disabled selected>انتخاب کنید</option>";
+
+        // Populate with options based on selected college
+        if (d && majors[d]) {
+            majors[d].forEach(function(maj) {
+                const option = document.createElement("option");
+                option.value = maj;
+                option.text = maj;
+                majorDropdown.add(option);
+            });
+        }
+    }
+
+    // Call the function when the page loads
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById('d').addEventListener('change', updateMajors);
+    });
+
+    function validateForm() {
+        var studentId = document.getElementById("st").value;
+        var postal_code = document.getElementById("postalcode").value;
+        var phone_number = document.getElementById("cp").value;
+        var national_id = document.getElementById("nid").value;
+
+        var errorField1 = document.getElementById("error-message1");
+        var errorField2 = document.getElementById("error-message2");
+        var errorField3 = document.getElementById("error-message3");
+        var errorField4 = document.getElementById("error-message4");
+
+        var valid = true;
+
+        if (studentId.length !== 11) {
+            errorField1.innerHTML = "شماره دانشجویی باید دقیقاً 11 رقم باشد.";
+            valid = false;
+        } else {
+            errorField1.innerHTML = "";
+        }
+
+        if (postal_code.length !== 10) {
+            errorField2.innerHTML = "کد پستی باید 10 رقم باشد.";
+            valid = false;
+        } else {
+            errorField2.innerHTML = "";
+        }
+
+        if (phone_number.length !== 11) {
+            errorField3.innerHTML = "شماره تلفن باید 11 رقم باشد.";
+            valid = false;
+        } else {
+            errorField3.innerHTML = "";
+        }
+
+        if (national_id.length !== 10) {
+            errorField4.innerHTML = "کد ملی باید 10 رقم باشد.";
+            valid = false;
+        } else {
+            errorField4.innerHTML = "";
+        }
+
+        return valid;
+    }
+</script>
+<form action="/add_course" method="post" onsubmit="return validateForm()"> 
+    <div class="mb-3">
+        <label>کد درس:</label>
+        <input type="text" id="cid" name="cid" placeholder="cid" class="form-control" maxlength="5" required autocomplete="off" pattern="[0-9]+" title="Only numbers are allowed"/>
+        <span id="error-message1" style="color: red;"></span>
+    </div>
+    <div class="mb-3">
+        <label>نام درس:</label>
+        <input type="text" name="cname" placeholder="cname" class="form-control" maxlength="11"required autocomplete="off"  pattern="[آ-ی ]+/?[0-9]*"/>
+    </div> 
+    <div class="mb-3">
+        <label for="de">دانشکده:</label>
+        <select id="de" name="de" class="form-control" required autocomplete="off" pattern="[آ-ی ]+">
+            <option value="" disabled selected>انتخاب کنید</option>
+            <option value="فنی و مهندسی">فنی و مهندسی</option>
+            <option value="علوم پایه">علوم پایه</option>
+            <option value="دامپزشکی">دامپزشکی</option>
+            <option value="ادبیات و اقتصاد">ادبیات و اقتصاد</option>
+        </select>
+        <div class="mb-3">
+            <label>credit</label>
+            <select name="credit" class="form-control" required autocomplete="off">
+                <option value="1" >1</option>
+                <option value="2" >2</option>
+                <option value="3" >3</option>
+                <option value="4" >4</option>
+            </select>
+        </div>
+    <input type="submit" value="Submit" class="btn btn-primary mb-3"/>  
+    <a href="/home" class="btn btn-primary mb-3">Home</a>
+</form>  
+{% endblock content %}

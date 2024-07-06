@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <a href="/studentsadd" class="btn btn-primary">Add New Student</a>
+        <br><br>
+        <a href="/" class="btn btn-primary">home</a>
+        <br><br>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>STID</th>
+                    <th>FName</th>
+                    <th>LName</th>
+                    <th>Father</th>
+                    <th>Birth</th>
+                    <th>IDS</th>
+                    <th>Born City</th>
+                    <th>Address</th>
+                    <th>Postal Code</th>
+                    <th>Cell Phone</th>
+                    <th>Home Phone</th>
+                    <th>Department</th>
+                    <th>1Major</th>
+                    <th>Marital Status</th>
+                    <th>National ID</th>
+                    <th>Subjects</th>
+                    <th>Professor IDs</th>
+                    <th width="200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in students %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.st }}</td>
+                        <td>{{ user.fn }}</td>
+                        <td>{{ user.ln }}</td>
+                        <td>{{ user.f }}</td>
+                        <td>{{ user.birth }}</td>
+                        <td>{{ user.ids }}</td>
+                        <td>{{ user.borncity }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.postalcode }}</td>
+                        <td>{{ user.cp }}</td>
+                        <td>{{ user.hp }}</td>
+                        <td>{{ user.d }}</td>
+                        <td>{{ user.m }}</td>
+                        <td>{{ user.ma }}</td>
+                        <td>{{ user.nid }}</td>
+                        <td>{{ user.scid }}</td>
+                        <td>{{ user.lids }}</td>
+                        <td>
+                            <a href="edit_student/{{ user.id }}" class="btn btn-success">Edit</a> 
+                            <a href="delete_student/{{ user.id }}" class="btn btn-danger">Delete</a>  
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}

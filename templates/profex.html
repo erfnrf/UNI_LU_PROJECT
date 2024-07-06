@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <a href="/professoradd" class="btn btn-primary">Add New professor</a>
+        <br><br>
+        <a href="/" class="btn btn-primary">home</a>
+        <br><br>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>LID</th>
+                    <th>pfname</th>
+                    <th>PLName</th>
+                    <th>Birth</th>
+                    <th>Born City</th>
+                    <th>Address</th>
+                    <th>Postal Code</th>
+                    <th>Cell Phone</th>
+                    <th>Home Phone</th>
+                    <th>Home Phone</th>
+                    <th>Department</th>
+                    <th>Major</th>
+                    <th>National ID</th>
+                    <th>PSCID</th>
+                    <th width="200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in professors %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.lid }}</td>
+                        <td>{{ user.pfn }}</td>
+                        <td>{{ user.pln }}</td>
+                        <td>{{ user.pbirth }}</td>
+                        <td>{{ user.pborncity }}</td>
+                        <td>{{ user.paddress }}</td>
+                        <td>{{ user.ppostalcode }}</td>
+                        <td>{{ user.pcp }}</td>
+                        <td>{{ user.php_number}}</td>
+                        <td>{{ user.php }}</td>
+                        <td>{{ user.pd }}</td>
+                        <td>{{ user.pm }}</td>
+                        <td>{{ user.pnid }}</td>
+                        <td>{{ user.pscid }}</td>
+                        <td>
+                            <a href="edit_professor/{{ user.id }}" class="btn btn-success">Edit</a> 
+                            <a href="delete_professor/{{ user.id }}" class="btn btn-danger">Delete</a>  
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
