@@ -91,7 +91,7 @@ for course
 ![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/cf9a3a51-d473-45e6-a9a6-0c0105543783)
 
 
-
+بخش بالا برای اعتبار سنجی اطلاعات دانشجو میباشد 
 
 
 
