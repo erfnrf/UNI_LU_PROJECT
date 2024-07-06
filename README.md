@@ -91,14 +91,18 @@ for course
 ![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/cf9a3a51-d473-45e6-a9a6-0c0105543783)
 
 
-بخش بالا برای اعتبار سنجی اطلاعات دانشجو میباشد 
+بخش بالا برای گرفتن و اعتبار سنجی اطلاعات دانشجو میباشد 
 
 
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/086bc7bc-09e7-47e3-8e10-7826654f75d9)
 
 
+خش بالا برای گرفتن و اعتبار سنجی اطلاعات استاد میباشد 
 
 
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/99b81fc9-1523-4076-9572-19d464c711fe)
 
+
+خش بالا برای گرفتن و اعتبار سنجی اطلاعات دروس میباشد 
 
 
