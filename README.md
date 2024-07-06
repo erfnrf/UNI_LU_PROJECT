@@ -100,6 +100,18 @@ for course
 بخش بالا برای گرفتن و اعتبار سنجی اطلاعات استاد میباشد 
 
 
+
+
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/5e390bb5-2fb9-4973-91ad-8d3393b4050a)
+
+
+بخش بالا برای بروزرسانی اساتید است
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/9f7d5905-65a0-4cee-8355-1fc3264f3604)
+
+بخش بالا برای حذف استاد وارد شده است
+
+
+
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/99b81fc9-1523-4076-9572-19d464c711fe)
 
 
@@ -117,4 +129,5 @@ for course
 
 
 بخش بالا برای حذف درس وارد شده است
+
 
