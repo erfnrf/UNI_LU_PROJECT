@@ -104,5 +104,8 @@ for course
 
 
 بخش بالا برای گرفتن و اعتبار سنجی اطلاعات دروس میباشد 
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/d60bd27a-e0c4-465e-bbe0-c05a357263d1)
 
+
+بخش بالا برای به روزرسانی دروس است
 
