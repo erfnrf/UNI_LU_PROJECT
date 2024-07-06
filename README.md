@@ -97,13 +97,15 @@ for course
 
 بخش بالا برای بروزرسانی اطلاعات دانشجو میباشد
 
+![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/2d5f78ee-8173-416a-b19f-b575ad18d2eb)
+
+بخش بالا برای حذف اطلاعات دانشجو میباشد
+
 
 ![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/086bc7bc-09e7-47e3-8e10-7826654f75d9)
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/2d5f78ee-8173-416a-b19f-b575ad18d2eb)
 
-بخش بالا برای حذف اطلاعات دانشجو میباشد
 
 بخش بالا برای گرفتن و اعتبار سنجی اطلاعات استاد میباشد 
 
