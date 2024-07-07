@@ -1,19 +1,16 @@
+# University System Management
+
 This code is designed to manage university system information, including adding professors, students, and course enrollments. It supports both frontend usage for website integration and backend usage with tools like Postman and Insomnia. The code includes validation for all inputs. The data must be entered in the following order: course, professor, then student; otherwise, it won't be accepted. Below, I will demonstrate how to use this code with backend tools.
 
+## JSON Examples
 
-
-
-
-
-for student
-
-
-
+### For Student
+```json
 {
     "st": "40211415001",
-    "fn": "اسم",
-    "ln": "فامیلی",
-    "f": "پدر",
+    "fn": "نام",
+    "ln": "نام‌خانوادگی",
+    "p": "پدر",
     "birth": "1302/01/31",
     "ids": "98765432101",
     "borncity": "تهران",
@@ -21,13 +18,14 @@ for student
     "postalcode": "1234512345",
     "cp": "01234567890",
     "hp": "1234567890",
-    "d": "فنی و مهندسی",
-    "m": "مهندسی نفت",
-    "ma": "مجرد",
+    "de": "فنی و مهندسی",
+    "ma": "مهندسی نفت",
+    "mjd": "مهندسی نفت",
     "nid": "0250254433",
-    "scid": "code dars",
-    "lids": "code ostad  "
+    "scid": "کد استاد",
+    "lids": "کد استاد"
 }
+
 
 
 
