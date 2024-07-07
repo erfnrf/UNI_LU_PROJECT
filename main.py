@@ -22,7 +22,7 @@ from routers import course as c
 
 
 
-#from routers import user, puser, other_user
+
 app = FastAPI()
 router = APIRouter()
 app.include_router(s.srouter)
