@@ -242,21 +242,7 @@ def delete_student(student_id: int, db: Session = Depends(get_db)):
 
 
 ### The above section is for retrieving and validating student information.
-
-```python
-
- ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/874779db-d0b9-41ee-a63b-bf7392eb462b)
-
-
 ### The above section is for updating student information.
-
-
-
-```
-
- ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/2d5f78ee-8173-416a-b19f-b575ad18d2eb)
-
-
 ### The above section is for deleting student information.
 
 
