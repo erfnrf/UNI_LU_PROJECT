@@ -60,11 +60,12 @@ def add_professor(professor: pclass, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="کد ملی باید 10 رقم باشد")
 
    
-    course_exists = db.query(models.course).filter(models.course.cname == professor.pscid).first()
+    course_exists = db.query(models.course).filter(models.course.cid == professor.pscid).first()
     if not course_exists:
         
         course_names = [course.cname for course in db.query(models.course).all()]
-        raise HTTPException(status_code=400, detail=f"درس مورد نظر اشتباه است. لیست درس‌های موجود: {course_names}")
+        course_cids = [course.cid for course in db.query(models.course).all()]
+        raise HTTPException(status_code=400, detail=f"درس مورد نظر اشتباه است. لیست درس‌های موجود: {course_names, course_cids}")
 
     # Add professor to database
     new_professor = models.professor(**professor.dict())

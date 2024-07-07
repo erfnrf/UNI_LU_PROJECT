@@ -62,16 +62,17 @@ def add_student(student: sclass, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="کد ملی باید 10 رقم باشد")
 
     # Check if scid matches an existing professor's lid and the course is valid
-    professor_exists = db.query(models.professor).filter(models.professor.lid == student.lids).first()
-    if not professor_exists:
+    professor = db.query(models.professor).filter(models.professor.lid == student.lids).first()
+    if not professor:
         professor_ids = [prof.lid for prof in db.query(models.professor).all()]
-        raise HTTPException(status_code=400, detail=f"استاد وارد شده اشتباه است. لیست کد استاد‌های موجود: {professor_ids}")
+        professor_names = [f"{prof.pfn} {prof.pln}" for prof in db.query(models.professor).all()]
+        raise HTTPException(status_code=400, detail=f"استاد وارد شده اشتباه است. لیست کد استاد‌های موجود: {professor_ids}, نام استاد‌ها: {professor_names}")
 
-    course_exists = db.query(models.course).filter(models.course.cid == student.scid).first()
-    if not course_exists:
+    course = db.query(models.course).filter(models.course.cid == student.scid).first()
+    if not course:
         course_ids = [course.cid for course in db.query(models.course).all()]
-        raise HTTPException(status_code=400, detail=f"درس وارد شده اشتباه است. لیست کد درس‌های موجود: {course_ids}")
-
+        course_names = [course.cname for course in db.query(models.course).all()]
+        raise HTTPException(status_code=400, detail=f"درس وارد شده اشتباه است. لیست کد درس‌های موجود: {course_ids}, نام درس‌ها: {course_names}")
 
     new_student = models.student(**student.dict())
     db.add(new_student)
