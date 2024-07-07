@@ -32,7 +32,7 @@ This code is designed to manage university system information, including adding 
 
 
 
-for professor
+### For Professor
 
 ```json
 
@@ -62,7 +62,7 @@ for professor
 
 
 
-for course
+###For Course
 
 
 ```json
