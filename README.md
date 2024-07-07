@@ -117,33 +117,64 @@ UNI_LU_PROJECT/
 
 ============================================================================================
 
- ![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/e6b3f31a-fc45-43f9-bd62-a41700dd6bf1)
+```
+
+from fastapi import FastAPI, Request, Depends, Form, status,HTTPException,APIRouter
+from fastapi.templating import Jinja2Templates
+import models
+import uvicorn
+from database import engine, sessionlocal
+from sqlalchemy.orm import Session
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field
+from typing import Optional
+from schemas import student as sclass
+from schemas import professor as pclass
+from schemas import course as cclass
+from models import course, professor
+import re
+from routers import student as s
+from routers import professor as p
+from routers import course as c
  
-![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/bbfc21c2-440e-4a80-8ec7-900b3f9c858b)
+```
+### Imports
+ ```![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/bbfc21c2-440e-4a80-8ec7-900b3f9c858b)
 
-![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/3e3b847d-48ff-4986-86eb-4cb302f58f82)
+```
 
-![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/cf9a3a51-d473-45e6-a9a6-0c0105543783)
+ ```![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/3e3b847d-48ff-4986-86eb-4cb302f58f82)
+
+```
+
+ ```![image](https://github.com/erfnrf/lu_uni_project/assets/142250364/cf9a3a51-d473-45e6-a9a6-0c0105543783)
 
 
 
 ### The above section is for retrieving and validating student information.
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/874779db-d0b9-41ee-a63b-bf7392eb462b)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/874779db-d0b9-41ee-a63b-bf7392eb462b)
 
 
 ### The above section is for updating student information.
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/2d5f78ee-8173-416a-b19f-b575ad18d2eb)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/2d5f78ee-8173-416a-b19f-b575ad18d2eb)
 
 
 ### The above section is for deleting student information.
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/086bc7bc-09e7-47e3-8e10-7826654f75d9)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/086bc7bc-09e7-47e3-8e10-7826654f75d9)
 
 
 
@@ -156,7 +187,9 @@ UNI_LU_PROJECT/
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/5e390bb5-2fb9-4973-91ad-8d3393b4050a)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/5e390bb5-2fb9-4973-91ad-8d3393b4050a)
 
 
 
@@ -164,7 +197,9 @@ UNI_LU_PROJECT/
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/9f7d5905-65a0-4cee-8355-1fc3264f3604)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/9f7d5905-65a0-4cee-8355-1fc3264f3604)
 
 
 
@@ -174,7 +209,9 @@ UNI_LU_PROJECT/
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/99b81fc9-1523-4076-9572-19d464c711fe)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/99b81fc9-1523-4076-9572-19d464c711fe)
 
 
 ### The above section is for retrieving and validating course information.
@@ -182,7 +219,9 @@ UNI_LU_PROJECT/
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/d60bd27a-e0c4-465e-bbe0-c05a357263d1)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/d60bd27a-e0c4-465e-bbe0-c05a357263d1)
 
 
 
@@ -191,7 +230,9 @@ UNI_LU_PROJECT/
 
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/c3237472-83a3-404f-86e7-bd924fc7a3aa)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/c3237472-83a3-404f-86e7-bd924fc7a3aa)
 
 
 
@@ -201,13 +242,21 @@ UNI_LU_PROJECT/
 
 ============================================================================================
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/43d33aca-9811-4e54-b48e-2284e85d43b0)
+```
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/3bb71746-860b-4277-ae90-cb26ee326333)
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/43d33aca-9811-4e54-b48e-2284e85d43b0)
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/62a63d50-32b7-4a60-848f-e60291f9fb95)
+```
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/dd28ef6e-3170-49e2-baec-0639db55be4a)
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/3bb71746-860b-4277-ae90-cb26ee326333)
+
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/62a63d50-32b7-4a60-848f-e60291f9fb95)
+
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/dd28ef6e-3170-49e2-baec-0639db55be4a)
 
 
 
@@ -217,19 +266,27 @@ UNI_LU_PROJECT/
 ============================================================================================
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/b4fd1a18-5b14-422a-b231-9803f272dad4)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/b4fd1a18-5b14-422a-b231-9803f272dad4)
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/ca2e630c-9b3d-413d-8986-db42e02a5a48)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/ca2e630c-9b3d-413d-8986-db42e02a5a48)
 
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/e08fc922-d739-44ac-8114-559c6cd59323)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/e08fc922-d739-44ac-8114-559c6cd59323)
 
 ### data
 
 ============================================================================================
 
-![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/308a8747-3854-4c01-854e-56d3367a5dce)
+```
+
+ ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/308a8747-3854-4c01-854e-56d3367a5dce)
 
 
 ### Main File
