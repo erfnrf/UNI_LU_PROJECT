@@ -2,6 +2,42 @@
 
 **This code is designed to manage university system information, including adding professors, students, and course enrollments. It supports both frontend usage for website integration and backend usage with tools like Postman and Insomnia. The code includes validation for all inputs. The data must be entered in the following order: course, professor, then student; otherwise, it won't be accepted. Below, I will demonstrate how to use this code with backend tools.**
 
+
+UNI_LU_PROJECT/
+├── routers/
+│   ├── __pycache__/
+│   │   ├── course.cpython-38.pyc
+│   │   ├── professor.cpython-38.pyc
+│   │   └── student.cpython-38.pyc
+│   ├── course.py
+│   ├── professor.py
+│   └── student.py
+├── static/
+│   └── style.css
+├── templates/
+│   ├── addnew.html
+│   ├── base.html
+│   ├── box.html
+│   ├── course.html
+│   ├── edit.html
+│   ├── editbox.html
+│   ├── editprof.html
+│   ├── home.html
+│   ├── index.html
+│   ├── prof.html
+│   └── profex.html
+├── .gitattributes
+├── database.py
+├── dockerfile
+├── fastapidb.sqlite3
+├── main.py
+├── models.py
+├── README.md
+├── requirements.txt
+├── schemas.py
+└── validators.py
+
+
 ## JSON Examples
 
 ### For Student
