@@ -26,7 +26,7 @@ This code is designed to manage university system information, including adding 
     "lids": "کد استاد"
 }
 
-
+```
 
 
 
@@ -34,7 +34,7 @@ This code is designed to manage university system information, including adding 
 
 for professor
 
-
+```json
 
 
 {
@@ -54,7 +54,7 @@ for professor
   "pscid": "ریاضی"
 }
 
-
+```
 
 
 
@@ -65,7 +65,7 @@ for professor
 for course
 
 
-
+```json
 
 {
   "cid": "12345",
