@@ -411,25 +411,25 @@ def get_courses(db: Session = Depends(get_db)):
 
 @crouter.post("/courseadd")
 def add_course(course: cclass, db: Session = Depends(get_db)):
-    # Validate course ID
+ 
     if len(str(course.cid)) != 5 or not str(course.cid).isdigit():
         raise HTTPException(status_code=400, detail="cid error")
 
-    # Validate Persian alphabet for course name
+ 
     if len(course.cname) > 25:
         raise HTTPException(status_code=400, detail="بیشتر از 25 کاراکتر است cname")
     
-    # Validate cname pattern
+
     if not is_valid_cname(course.cname):
         raise HTTPException(status_code=400, detail="cname باید حداقل یک حرف فارسی و صفر یا بیشتر عدد داشته باشد")
 
-    # Additional validations
+  
     if course.de not in vc:
         raise HTTPException(status_code=400, detail="رشته مورد نظر اشتباه است course de")
     if course.credit not in ["1", "2", "3", "4"]:
         raise HTTPException(status_code=400, detail="واحد وارد شده اشتباه است course credit")
 
-    # Add course to database
+ 
     new_course = models.course(**course.dict())
     db.add(new_course)
     db.commit()
@@ -460,7 +460,7 @@ def delete_course(course_id: int, db: Session = Depends(get_db)):
     return {"message": "Course deleted successfully"}
 
 
-# Include router in the app
+
 
 
 ```
