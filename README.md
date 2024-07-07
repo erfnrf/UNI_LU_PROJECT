@@ -358,7 +358,6 @@ def delete_professor(professor_id: int, db: Session = Depends(get_db)):
 
 
 
-# Include router in the app
 
 
 
