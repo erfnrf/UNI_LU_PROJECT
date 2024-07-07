@@ -155,8 +155,8 @@ from validators import vc, vf, cc, cities
 import re
 import models
 
-
 srouter = APIRouter()
+
 def get_db():
     db = sessionlocal()
     try:
@@ -168,7 +168,6 @@ def get_db():
 def get_students(db: Session = Depends(get_db)):
     students = db.query(models.student).all()
     return {"students": students}
-
 
 @srouter.post("/studentadd")
 def add_student(student: sclass, db: Session = Depends(get_db)):
@@ -210,6 +209,18 @@ def add_student(student: sclass, db: Session = Depends(get_db)):
     if len(student.nid) != 10:
         raise HTTPException(status_code=400, detail="کد ملی باید 10 رقم باشد")
 
+    # Check if scid matches an existing professor's lid and the course is valid
+    professor_exists = db.query(models.professor).filter(models.professor.lid == student.lids).first()
+    if not professor_exists:
+        professor_ids = [prof.lid for prof in db.query(models.professor).all()]
+        raise HTTPException(status_code=400, detail=f"استاد وارد شده اشتباه است. لیست کد استاد‌های موجود: {professor_ids}")
+
+    course_exists = db.query(models.course).filter(models.course.cid == student.scid).first()
+    if not course_exists:
+        course_ids = [course.cid for course in db.query(models.course).all()]
+        raise HTTPException(status_code=400, detail=f"درس وارد شده اشتباه است. لیست کد درس‌های موجود: {course_ids}")
+
+
     new_student = models.student(**student.dict())
     db.add(new_student)
     db.commit()
@@ -238,7 +249,6 @@ def delete_student(student_id: int, db: Session = Depends(get_db)):
     db.delete(existing_student)
     db.commit()
     return {"message": "Student deleted successfully"}
-
 
 
 
