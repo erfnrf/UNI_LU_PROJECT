@@ -497,28 +497,41 @@ def delete_course(course_id: int, db: Session = Depends(get_db)):
 ============================================================================================
 
 
+```python
+
+from fastapi import FastAPI, Request, Depends, Form, status,HTTPException,APIRouter
+from fastapi.templating import Jinja2Templates
+import models
+import uvicorn
+from database import engine, sessionlocal
+from sqlalchemy.orm import Session
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel, Field
+from typing import Optional
+from schemas import student as sclass
+from schemas import professor as pclass
+from schemas import course as cclass
+from models import course, professor
+import re
+from routers import student as s
+from routers import professor as p
+from routers import course as c
+
+
+
+
+
+
+
+app = FastAPI()
+router = APIRouter()
+app.include_router(s.srouter)
+app.include_router(p.prouter)
+app.include_router(c.crouter)
+
+
 ```
-
- ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/b4fd1a18-5b14-422a-b231-9803f272dad4)
-
-
-```
-
- ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/ca2e630c-9b3d-413d-8986-db42e02a5a48)
-
-
-```
-
- ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/e08fc922-d739-44ac-8114-559c6cd59323)
-
-### data
-
-============================================================================================
-
-```
-
- ```![image](https://github.com/erfnrf/UNI_LU_PROJECT/assets/142250364/308a8747-3854-4c01-854e-56d3367a5dce)
-
 
 ### Main File
 
