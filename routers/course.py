@@ -78,3 +78,4 @@ def delete_course(course_id: int, db: Session = Depends(get_db)):
     db.delete(existing_course)
     db.commit()
     return {"message": "Course deleted successfully"}
+#wwwwwwwwwww
