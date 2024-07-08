@@ -461,4 +461,6 @@ async def delete_professor(request: Request, user_id: int, db: Session = Depends
 # Include router in the app
 
 
-uvicorn.run(app, host="127.0.0.1", port=8000)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
